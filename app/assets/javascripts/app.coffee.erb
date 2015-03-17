@@ -14,15 +14,14 @@ music_mania.config([ '$routeProvider',
       )
 ])
 
-controllers = angular.module('controllers', [])
-
-controllers.controller('UsersController', ['$scope', '$routeParams', '$location', '$resource', ($scope, $routeParams, $location, $resource)->
-  $scope.search = (keywoards)-> $location.path('/').search('keywords', keywords)
-
-  User = $resource('/users/:userId', { userId: "@id", format: 'json' })
-  if $routeParams.keywords
-    keywords = $routeParams.keywords.toLowerCase()
-    User.query(keywords: $routeParams.keywords, (results)-> $scope.users = results)
-  else
-    $scope.users = []
+controllers = angular.module('controllers',[])
+controllers.controller("UsersController", [ '$scope', '$routeParams', '$location', '$resource',
+  ($scope, $routeParams, $location, $resource)->
+    $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
+    User = $resource('/users/:userId', { userId: "@id", format: 'json' })
+    if $routeParams.keywords
+      keywords = $routeParams.keywords.toLowerCase()
+      User.query(keywords: $routeParams.keywords, (results)-> $scope.users = results)
+    else
+      $scope.users = []
 ])
