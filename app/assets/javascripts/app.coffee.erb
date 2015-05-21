@@ -12,6 +12,10 @@ music_mania.config([ '$routeProvider',
         templateUrl: "index.html"
         controller: 'UsersController'
       )
+      .when('/:id',
+        templateUrl: 'show.html'
+        controller: 'UsersController'
+      )
 ])
 
 controllers = angular.module('controllers',[])
