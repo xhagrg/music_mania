@@ -16,4 +16,26 @@
  */
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap";
+.search_bar {
+  text-align: right;
+}
 
+.search_div {
+  float: right;
+  line-height: 45px;
+  margin: 1px;
+  padding: 0 0.7% 0 0;
+  width: 100%;
+}
+
+.search_field {
+  display: inline-block;
+  height: 45px;
+  margin: 0 1% 0 0;
+  width: 45%;
+}
+
+.search_button {
+  float: right;
+  height: 45px;
+}
