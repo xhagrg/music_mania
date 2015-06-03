@@ -16,4 +16,6 @@
 //= require angular-route/angular-route
 //= require angular-rails-templates
 //= require angular-resource/angular-resource
+//= require video.js/dist/video-js/video.js
+//= require videojs-youtube/dist/vjs.youtube.js
 //= require_tree .

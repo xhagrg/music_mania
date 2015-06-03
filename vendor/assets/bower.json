@@ -5,6 +5,8 @@
     "angular-route": "latest",
     "angular-resource": "latest",
     "angular-mocks": "latest",
-    "bootstrap-sass-official": "latest"
+    "bootstrap-sass-official": "latest",
+    "video.js": "latest",
+    "videojs-youtube": "latest"
   }
 }
