@@ -10,5 +10,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
-/tmp
-/vendor/assets/*
+tmp
+vendor/assets/*
