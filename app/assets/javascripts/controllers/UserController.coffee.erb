@@ -1,0 +1,12 @@
+controllers = angular.module('controllers')
+controllers.controller("UserController", [ '$scope', '$routeParams', '$location', '$resource',
+  ($scope,$routeParams,$location,$resource)->
+    User = $resource('/users/:userId', { userId: "@id", format: 'json' })
+    User.get({userId: $routeParams.userId},
+      ((user) -> 
+        $scope.user = user
+        $scope.songs = user.songs
+      ),
+      (httpResponse)-> $scope.user = null
+    )
+])
