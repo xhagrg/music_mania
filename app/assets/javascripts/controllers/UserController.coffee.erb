@@ -9,4 +9,19 @@ controllers.controller("UserController", [ '$scope', '$routeParams', '$location'
       ),
       (httpResponse)-> $scope.user = null
     )
+    console.log('hello')
+    $scope.add_this = (song_url) ->
+      if(song_url.length > 0)
+        add_song = $resource('/users/:userId/add_song', 
+                             { userId: '@id', format: 'json' },
+                             {
+                               update: {
+                                 method: 'POST',
+                                 params: {song_url: song_url}
+                           
+                               }
+                             }
+                            )
+        add_song.update({id: $routeParams.userId})
+      
 ])
