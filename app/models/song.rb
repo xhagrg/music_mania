@@ -4,4 +4,6 @@ class Song
   field :url, type: String
   field :extension, type: String
   field :play_count, type: Integer
+
+  belongs_to :playlist
 end
