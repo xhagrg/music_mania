@@ -1,0 +1,27 @@
+controllers = angular.module('controllers')
+controllers.controller("UserController", [ '$scope', '$routeParams', '$location', '$resource',
+  ($scope,$routeParams,$location,$resource)->
+    User = $resource('/users/:userId', { userId: "@id", format: 'json' })
+    User.get({userId: $routeParams.userId},
+      ((user) -> 
+        $scope.user = user
+        $scope.songs = user.songs
+      ),
+      (httpResponse)-> $scope.user = null
+    )
+    console.log('hello')
+    $scope.add_this = (song_url) ->
+      if(song_url.length > 0)
+        add_song = $resource('/users/:userId/add_song', 
+                             { userId: '@id', format: 'json' },
+                             {
+                               update: {
+                                 method: 'POST',
+                                 params: {song_url: song_url}
+                           
+                               }
+                             }
+                            )
+        add_song.update({id: $routeParams.userId})
+      
+])

@@ -38,7 +38,8 @@ class User
   field :middle_name, type: String
   field :nick_name, type: String
   field :admin, type: Boolean
-
+  
+  has_many :playlists
   def id
     _id.to_s
   end

@@ -12,20 +12,11 @@ music_mania.config([ '$routeProvider',
         templateUrl: "index.html"
         controller: 'UsersController'
       )
-      .when('/:id',
+      .when('/users/:userId',
         templateUrl: 'show.html'
-        controller: 'UsersController'
+        controller: 'UserController'
       )
 ])
 
 controllers = angular.module('controllers',[])
-controllers.controller("UsersController", [ '$scope', '$routeParams', '$location', '$resource',
-  ($scope, $routeParams, $location, $resource)->
-    $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
-    User = $resource('/users/:userId', { userId: "@id", format: 'json' })
-    if $routeParams.keywords
-      keywords = $routeParams.keywords.toLowerCase()
-      User.query(keywords: $routeParams.keywords, (results)-> $scope.users = results)
-    else
-      $scope.users = []
-])
+

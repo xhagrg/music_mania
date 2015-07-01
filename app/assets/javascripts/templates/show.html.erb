@@ -1,0 +1,23 @@
+<section class="row" >
+  <h1 class="text-center h2">You are now viewing playlist of {{user.full_name}}</h1>
+  <ul class='list-unstyled'>
+    <li	ng-repeat='song in songs'>
+      <section class="well col-md-6 col-md-offset-3">
+        <h1 class="h3 col-md-6 text-right" style="margin-top: 0"><a href='#'>{{song.url}}</a></h1>
+        <div class="col-md-6">
+        </div>
+      </section>
+    </li>
+  </ul>
+</section>
+
+
+<section class="row search_bar">
+  <form name='song_add_form'>
+    <div class="form-group col-md-6 col-md-offset-3 add_song_div">
+      <label for="song" class="sr-only">Song</label>
+      <input ng-model='song' name='song' type="url" autofocus class="form-control add_song_field" placeholder="video url. Example: https://www.youtube.com/watch?v=SPQG-I8afdg">
+      <button ng-click="add_this(song)" ng-disabled="!song_add_form.song.$dirty || (song_add_form.song.$dirty && song_add_form.song.$invalid) || (song_add_form.song.$dirty && song_add_form.song.$invalid)" class="btn btn-primary btn-lg add_song_button"><i class="glyphicon glyphicon-plus"></i> Add to Playlist</button>
+    </div>
+  </form>
+</section>
