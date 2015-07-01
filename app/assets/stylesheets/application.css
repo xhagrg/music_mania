@@ -141,3 +141,8 @@ body {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+
+.cust-pad-top {
+
+	border-top-width: 20px;
+}
