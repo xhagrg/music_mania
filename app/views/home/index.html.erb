@@ -1,10 +1,15 @@
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-	  <video 	id='video_container' class='video-js vjs-default-skin' controls preload='auto' width='auto' height='480' data-setup='{ "techOrder": ["youtube"], "children": { "controlBar": { "children": { "muteToggle": false } } } }'>
-		<source src='https://www.youtube.com/watch?v=wLXVDzM8Tnk', type='video/youtube'>
-		  <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-	  </video>
+      <video id="video_container" class='video-js vjs-default-skin' controls preload='auto' width='auto' height='480'>
+
+      </video>
+
+	  <!-- <video 	id='video_container' class='video-js vjs-default-skin' controls preload='auto' width='auto' height='480' data-setup='{ "techOrder": ["youtube"], "children": { "controlBar": { "children": { "muteToggle": false } } } }'> -->
+		<!-- <source src='https://www.youtube.com/watch?v=wLXVDzM8Tnk', type='video/youtube'> -->
+		<!--   <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p> -->
+	  <!-- </video> -->
 	</div>
   </div>
 </div>
@@ -17,3 +22,17 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+console.log(<%=@play_data.html_safe%>);
+
+videojs(document.getElementById("video_container"), { "techOrder": ["youtube"], "children": { "controlBar": { "children": { "muteToggle": false } } } }, function() {
+var sources = <%= @play_data.html_safe %>;
+console.log(sources)
+this.src(sources)
+
+<!-- this.attr('src', sources.src); -->
+<!-- this.attr('type', sources.type); -->
+
+<!-- videojs("video_container", <%=@play_data.html_safe%>, function() { -->
+});
+</script>
