@@ -14,7 +14,7 @@ class SongStorer
 
   def find_source
     host_name = song_url.hostname.split('.')
-    host_name[(2 - host_name).abs]
+    host_name[(2 - host_name.length).abs]
   end
 
   def store
