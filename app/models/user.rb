@@ -47,4 +47,8 @@ class User
   def full_name
     [first_name, middle_name, last_name].compact.map(&:humanize).join(' ')
   end
+
+  def get_playlist
+    playlists.first || Playlist.create(user: self)
+  end
 end

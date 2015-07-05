@@ -15,12 +15,13 @@ class UsersController < ApplicationController
   end
 
   def add_song
-    @user = User.where(_id: params[:id]).first
-    playlist = @user.playlists.first
-    song_url = params[:song_url]
-    song = playlist.songs.build(url: song_rul)
-    song.save
-    flash[:notice] = "Song added successfully."
+    song_storer = SongStorer.new(params)
+    if song_storer.valid_source?
+      flash[:notice] = 'Link added successfully.'
+      song_storer.store
+    else
+      flash[:alert] = "We only support video and audio from #{SongStorer::VALID_SOURCE.join(' ,')}"
+    end
     redirect_to :back
   end
 end
