@@ -19,7 +19,7 @@ class SongStorer
 
   def store
     playlist = user.get_playlist
-    Song.create(playlist: playlist, url: song_url.to_s, source: build_source)
+    Song.create(playlist: playlist, url: song_url.to_s, extension: build_source)
   end
 
   def build_source
