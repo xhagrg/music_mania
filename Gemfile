@@ -34,7 +34,7 @@ gem 'redis-namespace'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'video_info', github: 'thibaudgg/video_info'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do

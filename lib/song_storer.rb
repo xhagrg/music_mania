@@ -19,7 +19,8 @@ class SongStorer
 
   def store
     playlist = user.get_playlist
-    Song.create(playlist: playlist, url: song_url.to_s, extension: build_source)
+    video = VideoInfo.new(song_url)
+    Song.create(playlist: playlist, url: song_url.to_s, extension: build_source, name: video.title)
   end
 
   def build_source
