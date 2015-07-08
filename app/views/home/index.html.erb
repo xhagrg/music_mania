@@ -1,10 +1,14 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-	  <video 	id='video_container' class='video-js vjs-default-skin' controls preload='auto' width='auto' height='480' data-setup='{ "techOrder": ["youtube"], "children": { "controlBar": { "children": { "muteToggle": false } } } }'>
-		<source src='https://www.youtube.com/watch?v=wLXVDzM8Tnk', type='video/youtube'>
-		  <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-	  </video>
+      <video id="video_container" class='video-js vjs-default-skin' controls preload='auto' width='auto' height='480'>
+
+      </video>
+
+	  <!-- <video 	id='video_container' class='video-js vjs-default-skin' controls preload='auto' width='auto' height='480' data-setup='{ "techOrder": ["youtube"], "children": { "controlBar": { "children": { "muteToggle": false } } } }'> -->
+		<!-- <source src='https://www.youtube.com/watch?v=wLXVDzM8Tnk', type='video/youtube'> -->
+		<!--   <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p> -->
+	  <!-- </video> -->
 	</div>
   </div>
 </div>
@@ -17,3 +21,41 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+console.log(<%=@playlist_data.html_safe%>);
+var videos = <%=@playlist_data.html_safe%>;
+
+function setCookie(current_index, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = "current_index=" + current_index + "; " + expires;
+}
+
+function getCookie(current_index) {
+    var index = current_index + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(index) == 0) return c.substring(index.length,c.length);
+    }
+    return "";
+}
+
+//FIXED: playlist reset to start when
+videojs(document.getElementById("video_container"), { "techOrder": ["youtube"], "children": { "controlBar": { "children": { "muteToggle": false } } } }, function() {
+
+
+    var self = this,
+        i = (getCookie("current_index") || 1) - 1;
+
+    self.src(videos[i]);
+
+    self.on('ended', function() {
+        if ( i == videos.length -1 ) i = 0;
+        self.src(videos[i]);
+        setCookie(++i);
+    });
+});
+</script>
