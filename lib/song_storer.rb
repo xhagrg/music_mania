@@ -14,12 +14,12 @@ class SongStorer
 
   def find_source
     host_name = song_url.hostname.split('.')
-    host_name[(2 - host_name).abs]
+    host_name[(2 - host_name.length).abs]
   end
 
   def store
     playlist = user.get_playlist
-    video = VideoInfo.new(song_url)
+    video = VideoInfo.new(song_url.to_s)
     Song.create(playlist: playlist, url: song_url.to_s, extension: build_source, name: video.title)
   end
 
