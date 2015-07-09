@@ -6,11 +6,12 @@ class UsersController < ApplicationController
              else
                User.all
              end
+    @songs = current_user.get_playlist.songs
   end
 
   def show
     @user = User.where(_id: params[:id]).first
-    playlist = @user.playlists.first || @user.playlists.create
+    playlist = @user.get_playlist
     @songs = playlist.songs
   end
 
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
     song_storer = SongStorer.new(params)
     if song_storer.valid_source?
       flash[:notice] = 'Link added successfully.'
-      song_storer.store
+      @song = song_storer.store
     else
       flash[:alert] = "We only support video and audio from #{SongStorer::VALID_SOURCE.join(' ,')}"
     end
