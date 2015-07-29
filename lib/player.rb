@@ -2,7 +2,7 @@ class Player
   attr_accessor :user, :songs, :current_playlist, :mode
   def initialize(user)
     @user = user
-    @current_playlist = user.playlists.first
+    @current_playlist = user.get_playlist
     @songs = current_playlist.songs
     # @mode = player.mode # modes: {NORMAL,RANDOM,SELECTIVE,SUPER-FILTERED}
   end
