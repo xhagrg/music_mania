@@ -1,4 +1,3 @@
-console.log('hello');
 var MM = MM || {};
 
 MM.VideoHandler = (function($) {
@@ -9,7 +8,6 @@ MM.VideoHandler = (function($) {
       VideoHandler.playVideo();
     },
     setVideos: function(videos) {
-      console.log(videos);
       VideoHandler.videos = videos;
     },
     playVideo: function() {
