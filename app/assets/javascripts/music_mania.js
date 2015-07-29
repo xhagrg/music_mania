@@ -24,7 +24,7 @@ MM.VideoHandler = (function($) {
               }, function() {
                    var self = this,
                      videos = VideoHandler.videos;
-                   index = (getCookie("current_index") || 1) - 1;
+                   var index = (getCookie("current_index") || 1) - 1;
                    self.src(videos[index]);
 
                    self.on('ended', function() {
