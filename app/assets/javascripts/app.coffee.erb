@@ -1,8 +1,8 @@
 music_mania = angular.module('music_mania', [
   'templates',
   'ngRoute',
-  'ngResource',
-  'controllers'
+  'controllers',
+  'userServices'
 ])
 
 music_mania.config([ '$routeProvider',
@@ -16,6 +16,11 @@ music_mania.config([ '$routeProvider',
         templateUrl: 'show.html'
         controller: 'UserController'
       )
+      .when('/song/:songId',
+        templateUrl: 'index.html'
+        controller: 'SongController'
+      )
+
 ])
 
 controllers = angular.module('controllers',[])
