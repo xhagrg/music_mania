@@ -24,10 +24,11 @@ MM.VideoHandler = (function($) {
                             videos = VideoHandler.videos;
                         var index = (MM.CookieCooker.getCookie("current_index") || 1) - 1;
                         self.src(videos[index]);
-
+                        console.log(videos);
+                        console.log(index);
                         self.on('ended', function() {
                             if ( index == videos.length -1 )
-                                index = 0;
+                              index = 0;
                             self.src(videos[index]);
                             MM.CookieCooker.setCookie(++index);
                         });

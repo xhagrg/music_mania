@@ -3,24 +3,25 @@ controllers.controller("UserController", [ '$scope', '$routeParams', '$location'
   ($scope,$routeParams,$location,$resource,$route,$templateCache)->
     User = $resource('/users/:userId', { userId: "@id", format: 'json' })
     User.get({userId: $routeParams.userId},
-      ((user) -> 
+      ((user) ->
         $scope.user = user
         $scope.songs = user.songs
-        console.log($scope.songs)
       ),
       (httpResponse)-> $scope.user = null
     )
-    console.log('hello')
+
     $scope.add_this = (song_url) ->
       if(song_url.length)
-        add_song = $resource('/users/:userId/add_song', 
+        add_song = $resource('/users/:userId/add_song',
                              { userId: '@id', format: 'json' },
                              { update: { method: 'POST', params: { song_url: song_url } } }
                             )
-        add_song.update({id: $routeParams.userId}, 
+        add_song.update({id: $routeParams.userId},
                          (response) ->
-                           #currentPageTemplate = $route.current.templateUrl
-                           #$templateCache.remove(currentPageTemplate)
                            $route.reload()
-                       )
+                        )
+
+    $scope.play_song = (songId) ->
+      console.log(songId)
+      $location.url("/song/#{songId}")
 ])
