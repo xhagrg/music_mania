@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     get :playlist
     post :add_song
   end
+
+  resources :songs, defaults: {format: :json}, only: [:index, :show] do
+  end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
