@@ -1,7 +1,6 @@
 controllers = angular.module('controllers')
-controllers.controller("SongController", [ '$scope', '$routeParams', '$location', '$resource', '$route', '$templateCache'
-  ($scope,$routeParams,$location,$resource,$route,$templateCache)->
-    Song = $resource('/songs/:songId', { userId: "@id", format: 'json' })
+controllers.controller("SongController", [ '$scope', '$routeParams', '$location', 'Song'
+  ($scope,$routeParams,$location,$resource,Song)->
     Song.get({songId: $routeParams.songId},
       ((song) ->
         $scope.song = song
