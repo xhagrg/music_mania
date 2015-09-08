@@ -5,12 +5,14 @@ MM.VideoHandler = (function($) {
         videos: [],
         onReady: function(videos) {
             VideoHandler.setVideos(videos);
+            console.log('yaha pugyo');
             VideoHandler.playVideo();
         },
         setVideos: function(videos) {
             VideoHandler.videos = videos;
         },
         playVideo: function() {
+            console.log('hello');
             videojs(document.getElementById("video_container"),
                     { "techOrder": ["youtube"],
                       "children":
@@ -19,11 +21,13 @@ MM.VideoHandler = (function($) {
                           { "muteToggle": false }
                         }
                       }
-                    }, function() {
+                    }, function() {                        
+                        console.log('yoyo');
                         var self = this,
                             videos = VideoHandler.videos;
-                        var index = (MM.CookieCooker.getCookie("current_index") || 1) - 1;
+                        var index = 0;//(MM.CookieCooker.getCookie("current_index") || 1) - 1;
                         self.src(videos[index]);
+                        console.log(self.src);
                         console.log(videos);
                         console.log(index);
                         self.on('ended', function() {

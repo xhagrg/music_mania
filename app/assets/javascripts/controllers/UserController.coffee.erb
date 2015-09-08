@@ -1,8 +1,7 @@
 controllers = angular.module('controllers')
-controllers.controller("UserController", [ '$scope', '$routeParams', '$location', '$resource', '$route', '$templateCache'
-  ($scope,$routeParams,$location,$resource,$route,$templateCache)->
-    User = $resource('/users/:userId', { userId: "@id", format: 'json' })
-    User.get({userId: $routeParams.userId},
+controllers.controller("UserController", [ '$scope', '$routeParams', '$location', 'User', '$route', '$templateCache'
+  ($scope,$routeParams,$location,User,$route,$templateCache)->
+    User.list.get({userId: $routeParams.userId},
       ((user) ->
         $scope.user = user
         $scope.songs = user.songs
@@ -11,17 +10,11 @@ controllers.controller("UserController", [ '$scope', '$routeParams', '$location'
     )
 
     $scope.add_this = (song_url) ->
-      if(song_url.length)
-        add_song = $resource('/users/:userId/add_song',
-                             { userId: '@id', format: 'json' },
-                             { update: { method: 'POST', params: { song_url: song_url } } }
-                            )
-        add_song.update({id: $routeParams.userId},
-                         (response) ->
-                           $route.reload()
-                        )
+      if(song_url?)
+        User.song.add({ id: $routeParams.userId, song_url: song_url }, (response) ->
+          $route.reload()
+        )
 
     $scope.play_song = (songId) ->
-      console.log(songId)
       $location.url("/song/#{songId}")
 ])

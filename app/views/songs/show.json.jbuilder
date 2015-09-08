@@ -1,3 +1,2 @@
-json.id @song.id.to_s
-json.extension @song.extension
-json.url @song.url
+json.src @song.url
+json.type @song.extension
