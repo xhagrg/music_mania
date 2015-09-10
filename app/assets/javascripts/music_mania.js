@@ -11,6 +11,10 @@ MM.VideoHandler = (function($) {
         setVideos: function(videos) {
             VideoHandler.videos = videos;
         },
+        viewSong: function(song) {
+          var $video_player = videojs(document.getElementById('video_container'), { 'techOrder': ['youtube'] });
+          $video_player.src(song.src);
+        },
         playVideo: function() {
             console.log('hello');
             videojs(document.getElementById("video_container"),
@@ -22,14 +26,10 @@ MM.VideoHandler = (function($) {
                         }
                       }
                     }, function() {                        
-                        console.log('yoyo');
                         var self = this,
                             videos = VideoHandler.videos;
                         var index = 0;//(MM.CookieCooker.getCookie("current_index") || 1) - 1;
                         self.src(videos[index]);
-                        console.log(self.src);
-                        console.log(videos);
-                        console.log(index);
                         self.on('ended', function() {
                             if ( index == videos.length -1 )
                               index = 0;
