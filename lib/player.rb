@@ -8,7 +8,7 @@ class Player
   end
 
   def build_data
-    playlist_data = songs.map { |song| template = { type: song.extension, src: song.url } }
-    playlist_data.to_json
+    song = songs.first
+    { src: song.url, type: song.extension, index: 1 }.to_json
   end
 end

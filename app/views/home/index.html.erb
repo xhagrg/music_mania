@@ -9,7 +9,7 @@
 </div>
 <br/>
 <br/>
-<div class="container-fluid" ng-app="music_mania">
+<div class="container-fluid music-mania" ng-app="music_mania">
   <div class='view-container'>
     <div ng-view class='view-frame animate-view'>
 
@@ -17,5 +17,5 @@
   </div>
 </div>
 <script type="text/javascript">
-  MM.VideoHandler.onReady(<%= @playlist_data.html_safe %>);
+  MM.VideoHandler.onReady(<%= @song.html_safe %>);
 </script>
