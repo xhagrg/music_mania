@@ -1,12 +1,22 @@
 controllers = angular.module('controllers')
-controllers.controller("SongController", [ '$scope', '$routeParams', '$location', 'Song',
-  ($scope,$routeParams,$location,Song)->
-    Song.get({songId: $routeParams.songId},
+controllers.controller("SongController", [ '$scope', '$rootScope','$routeParams', '$location', 'Song', 'User',
+  ($scope,$rootScope,$routeParams,$location,Song,User)->
+    Song.list.get({songId: $routeParams.songId},
       ((song) ->
         $scope.song = song
         MM.VideoHandler.viewSong($scope.song)
       ),
       (httpResponse)-> $scope.song = null
     )
+    $scope.search = (keywords) -> $rootScope.users = User.list.query(keywords: keywords)
+
+    if $routeParams.keywords? > 0 
+      params = { keywords: $routeParams }
+    else
+      params = {}
+
+    User.list.query(params, (results)-> $rootScope.users = results)
+
+    $scope.view = (userId)-> $location.url("/users/#{userId}")
 ])
 

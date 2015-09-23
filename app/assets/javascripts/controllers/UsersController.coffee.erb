@@ -1,13 +1,13 @@
 controllers = angular.module('controllers')
-controllers.controller("UsersController", [ '$scope', '$routeParams', '$location', 'User',
-  ($scope,$routeParams,$location,User)->
-    $scope.search = (keywords) -> $scope.users = User.list.query(keywords: keywords)
+controllers.controller("UsersController", [ '$scope', '$rootScope','$routeParams', '$location', 'User',
+  ($scope,$rootScope,$routeParams,$location,User)->
+    $scope.search = (keywords) -> $rootScope.users = User.list.query(keywords: keywords)
    
     if $routeParams.keywords? > 0 
       params = { keywords: $routeParams }
     else
       params = {}
      
-    User.list.query(params, (results)-> $scope.users = results)
+    User.list.query(params, (results)-> $rootScope.users = results)
     $scope.view = (userId)-> $location.url("/users/#{userId}")
 ])
