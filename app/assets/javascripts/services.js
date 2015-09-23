@@ -4,8 +4,8 @@ userServices.factory('User', ['$resource', function($resource) {
     list: $resource('users/:userId.json', {userId: '@id'}, { 
       query: { method: 'GET', params: { }, isArray: true }
     }),
-      song: $resource('users/:userId/add_song', {userId: '@id' }, {
-        add: { method: 'POST', params: { }} 
+    song: $resource('users/:userId/add_song', {userId: '@id' }, {
+      add: { method: 'POST', params: { }} 
     })
   }
 }]);
@@ -13,8 +13,13 @@ userServices.factory('User', ['$resource', function($resource) {
 var songServices = angular.module('songServices', ['ngResource']);
 
 songServices.factory('Song', ['$resource', function($resource) {
-  return $resource('songs/:songId.json', {songId: '@id'}, {
-    query: {method: 'GET', paras: { }, isArray: true }
-  });
+  return {
+    list: $resource('songs/:songId.json', {songId: '@id'}, {
+      query: { method: 'GET', paras: { }, isArray: true }
+    }),
+    current: $resource('songs/current.json', {}, {
+      getNext: { method: 'GET', params: { }}
+    })
+  }
 }]);
 
