@@ -10,6 +10,7 @@ class SongsController < ApplicationController
   def next
     player = Player.new(current_user)
     player.increment_index
-    @song = player.build_data
+    @song = player.current_song
+    render 'show'
   end
 end
