@@ -1,7 +1,7 @@
 controllers = angular.module('controllers')
 controllers.controller("SongsController", [ '$scope', '$routeParams', '$location', 'Song',
   ($scope,$routeParams,$location,Song)->
-    Song.current.getNext({ index: $routeParams.index },
+    Song.current.getNext({},
       ((song) ->
         $scope.song = song
         MM.VideoHandler.viewSong($scope.song)

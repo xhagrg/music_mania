@@ -17,8 +17,8 @@ songServices.factory('Song', ['$resource', function($resource) {
     list: $resource('songs/:songId.json', {songId: '@id'}, {
       query: { method: 'GET', paras: { }, isArray: true }
     }),
-    current: $resource('songs/current.json', {}, {
-      getNext: { method: 'GET', params: { }}
+    current: $resource('songs/next.json', {}, {
+      getNext: { method: 'GET', params: {}}
     })
   }
 }]);
