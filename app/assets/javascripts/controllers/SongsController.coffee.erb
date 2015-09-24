@@ -3,8 +3,9 @@ controllers.controller("SongsController", [ '$scope', '$routeParams', '$location
   ($scope,$routeParams,$location,Song)->
     Song.current.getNext({},
       ((song) ->
+        console.log(song)
         $scope.song = song
-        MM.VideoHandler.viewSong($scope.song)
+        MM.VideoHandler.viewSong(song)
       ),
       (httpResponse)-> $scope.song = null
     )
