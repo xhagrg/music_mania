@@ -14,7 +14,7 @@ MM.VideoHandler = (function($) {
       var $video_player = _V_(document.getElementById('video_container'), { 'techOrder': ['youtube'] });
       $video_player.ready(function() {
         $video_player.src(song.src);
-        $video_player.play();
+//        $video_player.play();
         $video_player.on('ended', function() {
           VideoHandler.fetchNext();
         });

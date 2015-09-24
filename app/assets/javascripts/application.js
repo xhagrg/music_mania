@@ -18,4 +18,8 @@
 //= require angular-resource/angular-resource
 //= require video.js/dist/video-js/video.js
 //= require videojs-youtube/dist/vjs.youtube.js
+//= require bootstrap-material-design/dist/js/material.js
+//= require bootstrap-material-design/dist/js/ripples.js
 //= require_tree .
+
+$.material.init();

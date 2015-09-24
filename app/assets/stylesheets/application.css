@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require video.js/dist/video-js/video-js.css
+ *= require bootstrap-material-design/dist/css/material.css
+ *= require bootstrap-material-design/dist/css/ripples.css
  *= require_tree .
  *= require_self
  */
@@ -23,19 +25,14 @@
 .search_div {
   float: right;
   line-height: 45px;
-  margin: 1px;
-  padding: 0 0.7% 0 0;
   width: 100%;
 }
 
 .search_field {
   display: inline-block;
-  height: 45px;
-  margin: 0 1% 0 0;
   width: 45%;
 }
 
 .search_button {
-  float: right;
-  height: 45px;
+  margin: 0;
 }

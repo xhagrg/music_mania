@@ -9,6 +9,7 @@
     "video.js": "latest",
     "videojs-youtube": "latest",
     "videojs-vimeo": "latest",
-    "videojs-soundcloud": "latest"
+    "videojs-soundcloud": "latest",
+    "bootstrap-material-design": "latest"
   }
 }

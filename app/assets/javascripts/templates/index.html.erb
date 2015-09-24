@@ -3,20 +3,18 @@
     <div class="form-group col-md-6 col-md-offset-3 search_div">
       <label for="keywords" class="sr-only">Keywords</label>
       <input ng-model='keywords' name='keywords' type="text" autofocus class="form-control search_field" placeholder="User name. Example: Xha">
-	  <button ng-click="search(keywords)" class="btn btn-primary btn-lg search_button"><i class="glyphicon glyphicon-search"></i> Search</button>
+	  <button ng-click="search(keywords)" class="btn btn-primary btn-raised search_button"><i class="glyphicon glyphicon-search"></i> Search</button>
     </div>
   </form>
 </section>
-<hr/>
+<br/>
 <section class="row" ng-if="users.length">
-  <h1 class="text-center h2">Results</h1>
   <ul class='list-unstyled'>
     <li	ng-repeat='user in users'>
-      <section class="well col-md-6 col-md-offset-3">
-        <h1 class="h3 col-md-6 text-right" style="margin-top: 0"><a href ng-click="view(user.id)">{{user.full_name}}</a></h1>
-        <div class="col-md-6">
-        </div>
+      <section class="well">
+        <h3 class="h3" style="margin-top: 0"><a href ng-click="view(user.id)">{{user.full_name}}</a></h1>
       </section>
+      <br/>
     </li>
   </ul>
 </section>
