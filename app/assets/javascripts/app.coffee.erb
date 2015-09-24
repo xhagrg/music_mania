@@ -21,8 +21,8 @@ music_mania.config([ '$routeProvider',
         templateUrl: 'index.html'
         controller: 'SongController'
       )
-      .when('/song/current/:id', 
-        template: ' ',
+      .when('/song/current', 
+        templateUrl: 'index.html',
         controller: 'SongsController'
       )
 ])
