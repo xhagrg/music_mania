@@ -22,4 +22,6 @@
 //= require bootstrap-material-design/dist/js/ripples.js
 //= require_tree .
 
-$.material.init();
+$(document).on('ready', function() {
+  $.material.init();
+});
